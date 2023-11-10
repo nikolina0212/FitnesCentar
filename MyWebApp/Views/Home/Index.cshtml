@@ -1,0 +1,151 @@
+﻿@using MyWebApp.Models
+@model IEnumerable<FitnesCentar>
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+<style>
+    body {
+        background-color: #ffe6e6
+    }
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    table {
+        background-color: #e0ebeb;
+        
+    }
+    p{
+        color:red;
+    }
+    .label {
+        text-align: center;
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+        font-size: 50px;
+    }
+    
+    
+</style>
+<table border="1">
+    <tr>
+        @if (ViewBag.Prijavljen != null && ViewBag.Prijavljen.Uloga.ToString() == "POSETILAC")
+        {
+            <th colspan="5" class="label">FITNES CENTRI</th>
+        }
+    </tr>
+    <tr>
+        @if (ViewBag.Prijavljen == null || ViewBag.Prijavljen.Uloga.ToString() == "VLASNIK" || ViewBag.Prijavljen.Uloga.ToString() == "TRENER")
+        {
+            <th colspan="4" class="label">FITNES CENTRI</th>
+        }
+    </tr>
+    <tr>
+        <th>Naziv</th>
+        <th>Adresa</th>
+        <th>Godina otvaranja</th>
+        <th></th>
+        @if (ViewBag.Prijavljen != null && ViewBag.Prijavljen.Uloga.ToString() == "POSETILAC")
+        {
+            <th></th>
+        }
+    </tr>
+    @foreach (FitnesCentar f in Model)
+    {
+        <tr>
+            <td>@f.Naziv</td>
+            <td>@f.Adresa</td>
+            <td>@f.GodinaOtvaranja</td>
+            <td>
+                <form action="~/Home/Detalji" method="post">
+                    <input type="text" name="naziv" value="@f.Naziv" hidden />
+                    <input type="text" name="adresa" value="@f.Adresa" hidden />
+                    <input type="submit" value="Detalji" />
+                </form>
+            </td>
+
+            @if (ViewBag.Prijavljen != null && ViewBag.Prijavljen.Uloga.ToString() == "POSETILAC")
+            {
+                <td>
+                    <form method="post" action="~/Posetilac/Komentar">
+                        <input type="text" name="fitnesCentar" value="@f.Naziv" hidden />
+                        <input type="text" name="adresa" value="@f.Adresa" hidden />
+                        <input type="submit" value="Ostavi komentar" />
+                    </form>
+                </td>
+            }
+
+        </tr>
+    }
+
+</table>
+    <h2>Pretraga</h2>
+    @if (TempData["poruka"] != null)
+    {
+        <p>@TempData["poruka"]</p>
+    }
+    <form action="~/Home/Pretrazi" method="post">
+        <label>Naziv:</label><input type="text" name="naziv" /><br />
+        <label>Adresa:</label><input type="text" name="adresa" /><br />
+        <label>Godina otvaranja:</label><input type="number" name="minGod" /> - <input type="number" name="maxGod" />
+        <input type="submit" value="Pretrazi" />
+    </form>
+    <h2>Sortiranje</h2>
+    <form action="~/Home/SortirajPoNazivu" method="get">
+        Sortiraj po nazivu: <select name="nacin">
+            <option value="Opadajuce">Opadajuce</option>
+            <option value="Rastuce">Rastuce</option>
+        </select> <input type="submit" value="Sortiraj" />
+    </form>
+    <form action="~/Home/SortirajPoAdresi" method="get">
+        Sortiraj po adresi: <select name="nacin">
+            <option value="Opadajuce">Opadajuce</option>
+            <option value="Rastuce">Rastuce</option>
+        </select> <input type="submit" value="Sortiraj" />
+    </form>
+    <form action="~/Home/SortirajPoGodini" method="get">
+        Sortiraj po godini otvaranja: <select name="nacin">
+            <option value="Opadajuce">Opadajuce</option>
+            <option value="Rastuce">Rastuce</option>
+        </select> <input type="submit" value="Sortiraj" />
+    </form>
+    
+    <p></p>
+
+    @if (ViewBag.Prijavljen != null && ViewBag.Prijavljen.Uloga.ToString() == "VLASNIK")
+    {
+        <a href="~/Vlasnik/PregledFitnesCentara" style="color: #0099ff">Moji fitnes centri</a><br />
+    }
+
+    @if (ViewBag.Prijavljen != null && ViewBag.Prijavljen.Uloga.ToString() == "TRENER")
+    {
+        <a href="~/Trener/PregledGrupnihTreninga" style="color: #0099ff">Moji treninzi</a><br />
+    }
+    @if (ViewBag.Prijavljen != null && ViewBag.Prijavljen.Uloga.ToString() == "POSETILAC")
+    {
+        <a href="~/Posetilac/IstorijaTreninga" style="color:#0099ff">Istorija mojih treninga</a><br />
+    }
+
+    @if (ViewBag.Prijavljen != null)
+    {
+        <a href="~/Autentifikacija/Logout" style="color:#0099ff">Izloguj se</a><br />
+        <a href="~/Autentifikacija/IzmeniProfil" style="color:#0099ff">Uredi profil</a><br />
+        <a href="~/Autentifikacija/Reset" style="color:#0099ff">Reset</a><br />
+    }
+
+
+    @if (ViewBag.Prijavljen == null)
+    {
+        <a href="~/Autentifikacija/Registracija" style="color:#0099ff">Registruj se</a><br />
+        <a href="~/Autentifikacija/Index" style="color:#0099ff">Prijavi se</a><br />
+        <a href="~/Autentifikacija/Reset" style="color:#0099ff">Reset</a>
+    }
+
+

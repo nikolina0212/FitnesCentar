@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+
+<style>
+    body {
+        background-color: #e0ebeb
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+
+    p {
+        color: red;
+    }
+
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+    }
+</style>
+
+<h2>Prijava</h2>
+
+@if (TempData["poruka"] != null)
+{
+    <p>@TempData["poruka"]</p>
+}
+ 
+
+<form action="~/Autentifikacija/Index" method="post">
+    <table>
+        <tr>
+            <td>Korisnicko ime:</td>
+            <td><input type="text" name="korisnickoIme" /></td>
+        </tr>
+        <tr>
+            <td>Lozinka:</td>
+            <td><input type="password" name="lozinka" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Prijavi se" /></td>
+        </tr>
+    </table>
+</form>
+<a href="~/Home/Index" style="color:#0099ff">Povratak na pocetnu stranicu</a>
+

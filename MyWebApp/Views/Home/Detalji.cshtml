@@ -1,0 +1,112 @@
+﻿@using MyWebApp.Models
+@model IEnumerable<FitnesCentar>
+@{
+    Layout = null;
+    ViewBag.Title = "Detalji";
+}
+<style>
+    body {
+        background-color: #ffe6e6
+    }
+    table {
+        background-color: #e0ebeb;
+    }
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+</style>
+ 
+
+@foreach (FitnesCentar f in Model)
+{
+    <h2>Detaljan prikaz informacija izabranog fitnes centra</h2>
+    <label>Naziv: @f.Naziv</label><br />
+    <label></label>
+    <label>Adresa: @f.Adresa</label><br />
+    <label></label>
+    <label>Godina otvaranja: @f.GodinaOtvaranja</label><br />
+    <label></label>
+    <label>Vlasnik: @f.Vlasnik.KorisnickoIme</label><br />
+    <label></label>
+    <label>Cena mesecne clanarine: @f.CenaMesecneClanarine RSD</label><br />
+    <label></label>
+    <label>Cena godisnje clanarine: @f.CenaGodisnjeClanarine RSD</label><br />
+    <label></label>
+    <label>Cena treninga:  @f.CenaTreninga RSD</label><br />
+    <label></label>
+    <label>Cena grupnog treninga: @f.CenaGrupnogTreninga RSD</label><br />
+    <label></label>
+    <label>Cena grupnog treninga sa personalnim trenerom: @f.CenaGrupnogTreningaSaPT RSD</label><br />
+    <label></label>
+
+}
+
+<h2>Predstojeci grupni treninzi</h2>
+
+
+@if (ViewBag.Treninzi.Count != 0)
+{
+    <table border="1">
+        <tr>
+            <th>Naziv</th>
+            <th>Tip treninga</th>
+            <th>Fitnes centar</th>
+            <th>Trajanje treninga</th>
+            <th>Vreme odrzavanja</th>
+            <th>Maksimalan broj posetilaca</th>
+            <th>Ukupan broj prijavljenih posetilaca</th>
+
+        </tr>
+        @foreach (GrupniTrening g in ViewBag.Treninzi)
+        {
+            <tr>
+                <td>@g.Naziv</td>
+                <td>@g.TipTreninga</td>
+                <td>@g.FitnesCentar.Naziv, @g.FitnesCentar.Adresa</td>
+                <td>@g.TrajanjeTreninga</td>
+                <td>@g.VremeTreninga.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@g.MaxBrPosetilaca</td>
+                <td>@g.SpisakPosetilaca.Count</td>
+                @if (ViewBag.Prijavljen != null && ViewBag.Prijavljen.Uloga.ToString() == "POSETILAC")
+                {
+                    <td>
+                        <form action="~/Posetilac/PrijavaNaTrening" method="post">
+                            <input type="text" value="@g.Naziv" name="naziv" hidden />
+                            <input type="submit" value="Prijavi se na trening" />
+                        </form>
+                    </td>
+
+                }
+
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h3>Predstojeci treninzi za odabrani fitnes centar ne postoje!</h3>
+}
+
+<h2>Komentari posetilaca</h2>
+@if (ViewBag.Komentari.Count != 0)
+{
+    foreach (var item in ViewBag.Komentari)
+    {
+        <label>Posetilac: @item.Posetilac.KorisnickoIme</label> <br />
+        <label></label>
+        <label>Fitnes centar: @item.FitnesCentar.Naziv, @item.FitnesCentar.Adresa</label> <br />
+        <label></label>
+        <label>Tekst komentara: @item.TekstKomentara</label> <br />
+        <label></label>
+        <label>Ocena: @item.Ocena</label> <br />
+        <p></p>
+    }
+}
+else
+{
+    <h3>Komentari za odabrani fitnes centar ne postoje!</h3>
+}
+<a href="~/Home/Index" style="color:#0099ff">Povratak na pocetnu stranicu</a>
+
+

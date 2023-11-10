@@ -1,0 +1,111 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "IzmeniProfil";
+}
+<style>
+    body {
+        background-color: #ffe6e6
+    }
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    table {
+        background-color: #e0ebeb;
+    }
+    p{
+        color:red
+
+    }
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+    h3 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+</style>
+
+<h2>Moj profil</h2>
+@if (ViewBag.Korisnik != null)
+{
+    <table border="1">
+        <tr>
+            <td>Korisnicko ime</td>
+            <td>@ViewBag.Korisnik.KorisnickoIme</td>
+        </tr>
+        <tr>
+            <td>Ime</td>
+            <td>@ViewBag.Korisnik.Ime</td>
+        </tr>
+        <tr>
+            <td>Prezime</td>
+            <td>@ViewBag.Korisnik.Prezime</td>
+        </tr>
+        <tr>
+            <td>Pol</td>
+            <td>@ViewBag.Korisnik.Pol</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>@ViewBag.Korisnik.Email</td>
+        </tr>
+        <tr>
+            <td>Datum rodjenja</td>
+            <td>@((DateTime.Parse(ViewBag.Korisnik.DatumRodjenja)).ToString("dd/MM/yyyy"))</td>
+        </tr>
+    </table>
+}
+
+@if (TempData["poruka"] != null)
+{
+    <p>@TempData["poruka"]</p>
+}
+<h3>Izmena podataka:</h3>
+<form action="~/Autentifikacija/IzmeniKorisnickoIme" method="post">
+    <label>Korisnicko ime: </label>
+    <input type="text" name="korisnickoIme" />
+    <input type="submit" value="Izmeni" />
+</form>
+<form action="~/Autentifikacija/IzmeniLozinku" method="post">
+    <label>Lozinka: </label>
+    <input type="password" name="lozinka" />
+    <input type="submit" value="Izmeni" />
+</form>
+<form action="~/Autentifikacija/IzmeniIme" method="post">
+    <label>Ime: </label>
+    <input type="text" name="ime" />
+    <input type="submit" value="Izmeni" />
+</form>
+<form action="~/Autentifikacija/IzmeniPrezime" method="post">
+    <label>Prezime: </label>
+    <input type="text" name="prezime" />
+    <input type="submit" value="Izmeni" />
+</form>
+<form action="~/Autentifikacija/IzmeniPol" method="post">
+    <label>Pol: </label>
+    <select name="pol">
+        <option value="Muski">MUSKI</option>
+        <option value="Zenski">ZENSKI</option>
+    </select>
+    <input type="submit" value="Izmeni" />
+</form>
+<form action="~/Autentifikacija/IzmeniEmail" method="post">
+    <label>Email: </label>
+    <input type="email" name="email" />
+    <input type="submit" value="Izmeni" />
+</form>
+<form action="~/Autentifikacija/IzmeniDatumRodjenja" method="post">
+    <label>Datum rodjenja: </label>
+    <input type="date" name="datumRodjenja" />
+    <input type="submit" value="Izmeni" />
+</form>
+<a href="~/Home/Index" style="color:#0099ff">Nazad</a>

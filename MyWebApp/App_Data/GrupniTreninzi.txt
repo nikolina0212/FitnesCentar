@@ -1,0 +1,9 @@
+T7;Squats;Bestfit24;Bulevar Oslobodjenja 127, Novi Sad, 21000;70;07/01/2022 20:00;5;ivan,janko,milica,stefan11;mima;False
+T2;LesMillsTone;Bestfit24;Bulevar Oslobodjenja 127, Novi Sad, 21000;90;15/06/2022 20:00;10;ivan,milica;mima;False
+T66;Yoga;MissFit;Brace Ribnikar 15, Novi Sad, 21000;30;07/08/2022 20:00;10;ivan;iva;False
+T1;Yoga;Non Stop;Narodnih heroja 1, Novi Sad, 21000;60;06/08/2022 17:00;2;ivan,janko,milica;dragana05;False
+T3;BodyPump;Non Stop;Narodnih heroja 1, Novi Sad, 21000;30;05/09/2022 17:00;7;kiki55,ivan,milica,jana,joka;dragana05;False
+T8;Yoga;MissFit;Lasla Gala 34, Novi Sad, 21000;30;08/09/2022 16:56;10;jana;veka;False
+T22;Yoga;MissFit;Brace Ribnikar 15, Novi Sad, 21000;30;07/09/2022 20:00;10;kiki55,janko,ivan,22;iva;False
+T77;LesMillsTone;Bestfit24;Bulevar Oslobodjenja 127, Novi Sad, 21000;80;21/09/2022 20:00;5;janko,kiki55,ivan,stefan11,ivana;mima;False
+T5;Yoga;Bestfit24;Bulevar Oslobodjenja 127, Novi Sad, 21000;30;10/09/2022 09:45;10;jana;mima;False

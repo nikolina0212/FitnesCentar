@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "Komentar";
+}
+<style>
+    body {
+        background-color: #e0ebeb
+    }
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+    }
+</style>
+<h2>Ostavite komentar</h2>
+<form action="~/Vlasnik/Komentari" method="post">
+    <table>
+        <tr>
+            <td>Tekst komentara: </td>
+            <td><input type="text" name="tekstKomentara" /></td>
+        </tr>
+        <tr>
+            <td>Ocena: </td>
+            <td><input type="text" name="ocena" /></td>
+            <td>(na skali od 1 do 5)</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="fitnesCentar" value="@ViewBag.FitnesCentar" hidden />
+                <input type="text" name="adresa" value="@ViewBag.Adresa" hidden />
+                <input type="submit" value="Posalji" />
+            </td>
+        </tr>
+       
+    </table>
+</form>
+<a href="~/Home/Index" style="color:#0099ff">Nazad</a>
+
+

@@ -1,0 +1,108 @@
+﻿@using MyWebApp.Models
+@model IEnumerable<GrupniTrening>
+
+@{
+    Layout = null;
+    ViewBag.Title = "IstorijaTreninga";
+}
+
+<style>
+    body {
+        background-color: #ffe6e6
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    table {
+        background-color: #e0ebeb;
+    }
+
+    p {
+        color: red
+    }
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+    h3 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+    
+</style>
+
+<h2>Moji zavrseni treninzi</h2>
+
+@if (Model.Count() != 0)
+{
+    <table border="1">
+        <tr>
+            <th>Naziv</th>
+            <th>Tip treninga</th>
+            <th>Fitnes centar</th>
+            <th>Trajanje treninga</th>
+            <th>Vreme odrzavanja</th>
+        </tr>
+        @foreach (GrupniTrening g in Model)
+        {
+            <tr>
+                <td>@g.Naziv</td>
+                <td>@g.TipTreninga</td>
+                <td>@g.FitnesCentar.Naziv, @g.FitnesCentar.Adresa</td>
+                <td>@g.TrajanjeTreninga</td>
+                <td>@g.VremeTreninga.ToString("dd/MM/yyyy HH:mm")</td>
+
+            </tr>
+        }
+
+    </table>
+
+    <h3>Pretraga</h3>
+    if (TempData["poruka"] != null)
+    {
+        <p>@TempData["poruka"]</p>
+    }
+    <form action="~/Posetilac/Pretrazi" method="post">
+        <label>Naziv:</label><input type="text" name="naziv" /><br />
+        <label>Tip treninga:</label><input type="text" name="tipTreninga" /><br />
+        <label>Naziv fitnes centra:</label><input type="text" name="fitnesCentar" />
+        <input type="submit" value="Pretrazi" />
+    </form>
+    <h3>Sortiranje</h3>
+    <form action="~/Posetilac/SortirajPoNazivu" method="get">
+        Sortiraj po nazivu: <select name="nacin">
+            <option value="Opadajuce">Opadajuce</option>
+            <option value="Rastuce">Rastuce</option>
+        </select> <input type="submit" value="Sortiraj" />
+    </form>
+    <form action="~/Posetilac/SortirajPoTipuTreninga" method="get">
+        Sortiraj po tipu treninga: <select name="nacin">
+            <option value="Opadajuce">Opadajuce</option>
+            <option value="Rastuce">Rastuce</option>
+        </select> <input type="submit" value="Sortiraj" />
+    </form>
+    <form action="~/Posetilac/SortirajPoDatumuIVremenu" method="get">
+        Sortiraj po datumu i vremenu odrzavanja: <select name="nacin">
+            <option value="Opadajuce">Opadajuce</option>
+            <option value="Rastuce">Rastuce</option>
+        </select> <input type="submit" value="Sortiraj" />
+    </form>
+}
+else
+{
+    <h4>Ne postoje treninzi na kojima ste ucestvovali!</h4>
+}
+
+<a href="~/Posetilac/IstorijaTreninga" style="color:#0099ff">Reset</a><br />
+<a href="~/Home/Index" style="color:#0099ff">Nazad</a>
+
+

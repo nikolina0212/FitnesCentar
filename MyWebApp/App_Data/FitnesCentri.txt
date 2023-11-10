@@ -1,0 +1,7 @@
+Flex;Sutjeska 2, Novi Sad, 21000;2015;miloss;VLASNIK;5000;50000;500;400;1000;True
+Non Stop;Narodnih heroja 1, Novi Sad, 21000;2022;miloss;VLASNIK;3000;32000;600;400;1000;False
+She;Narodnog fronta 2, Novi Sad, 21000;2022;miloss;VLASNIK;2500;25000;300;250;500;True
+Bestfit24;Bulevar Oslobodjenja 127, Novi Sad, 21000;2018;nikolina00;VLASNIK;4000;40000;500;400;2500;False
+MissFit;Lasla Gala 34, Novi Sad, 21000;2011;nikolina00;VLASNIK;3000;25000;250;200;500;False
+MissFit;Brace Ribnikar 15, Novi Sad, 21000;2019;nikolina00;VLASNIK;3000;25000;250;200;400;False
+Pro;Narodnog Fronta 58, Novi Sad, 21000;2018;joca222;VLASNIK;3000;25000;300;400;400;False

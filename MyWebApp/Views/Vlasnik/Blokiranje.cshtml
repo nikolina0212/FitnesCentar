@@ -1,0 +1,53 @@
+﻿@using MyWebApp.Models
+@model IEnumerable<Korisnik>
+@{
+    Layout = null;
+    ViewBag.Title = "Blokiranje";
+}
+
+<style>
+    body {
+        background-color: #ffe6e6
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    table {
+        background-color: #e0ebeb;
+    }
+</style>
+@if (Model.Count() != 0)
+{
+    <h2>Treneri zaposleni u fitnes centru:</h2>
+    <table border="1">
+        @foreach (Korisnik k in Model)
+        {
+            <tr>
+                <td>@k.KorisnickoIme</td>
+                <td>@k.Ime</td>
+                <td>@k.Prezime</td>
+                <td>
+                    <form action="~/Vlasnik/BlokirajTrenera" method="post">
+                        <input type="text" name="korisnickoIme" value="@k.KorisnickoIme" hidden />
+                        <input type="submit" value="Blokiraj" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h3>U fitnes centru nema zaposlenih trenera!</h3>
+}
+
+<a href="~/Vlasnik/PregledFitnesCentara" style="color:#0099ff">Nazad</a>

@@ -1,0 +1,62 @@
+﻿@using MyWebApp.Models
+@model IEnumerable<Komentar>
+@{
+    Layout = null;
+    ViewBag.Title = "MojiKomentari";
+}
+
+<style>
+    body {
+        background-color: #e0ebeb
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+
+    p {
+        color: red;
+    }
+</style>
+<h2>Komentari</h2>
+@if (Model.Count() != 0)
+{
+    <table border="1">
+        <tr>
+            <th>Korisnik:</th>
+            <th>Tekst komentara:</th>
+            <th>Ocena:</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (Komentar k in Model)
+        {
+            <tr>
+                <td>@k.Posetilac.KorisnickoIme</td>
+                <td>@k.TekstKomentara</td>
+                <td>@k.Ocena</td>
+                <td>
+                    <form action="~/Vlasnik/OdobriKomentar" method="post">
+                            <input type="submit" value="Odobri" style="background-color:green" />
+                        <input type="text" value="@k.Id" name="idkomentara" hidden />
+                    </form>
+                </td>
+                <td>
+                    <form action="~/Vlasnik/OdbijKomentar" method="post">
+                            <input type="submit" value="Odbij" style="background-color:red" />
+                        <input type="text" value="@k.Id" name="idKomentara" hidden />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h3>Nema komentara za ovaj fitnes centar!</h3>
+
+}
+
+<a href="~/Vlasnik/PregledFitnesCentara" style="color:#0099ff">Nazad</a>
+

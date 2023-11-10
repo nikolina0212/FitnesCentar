@@ -1,0 +1,105 @@
+﻿@using MyWebApp.Models
+@model IEnumerable<GrupniTrening>
+
+@{
+    Layout = null;
+    ViewBag.Title = "PregledZavrsenihTreninga";
+}
+
+<style>
+    body {
+        background-color: #ffe6e6
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+
+    h3 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    table {
+        background-color: #e0ebeb;
+    }
+
+    p {
+        color: red
+    }
+</style>
+
+<h2>Spisak zavrsenih treniga</h2>
+@if (Model.Count() != 0)
+{
+    <table border="1">
+        <tr>
+            <th>Naziv treninga</th>
+            <th>Tip treninga</th>
+            <th>Fitnes centar</th>
+            <th>Adresa</th>
+            <th>Trajanje treninga:</th>
+            <th>Datum kada ce se odrzati trening:</th>
+            <th>Maksimalan broj posetilaca</th>
+        </tr>
+        @foreach (GrupniTrening g in Model)
+        {
+            <tr>
+                <td>@g.Naziv</td>
+                <td>@g.TipTreninga</td>
+                <td>@g.FitnesCentar.Naziv</td>
+                <td>@g.FitnesCentar.Adresa</td>
+                <td>@g.TrajanjeTreninga</td>
+                <td>@g.VremeTreninga.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@g.MaxBrPosetilaca</td>
+            </tr>
+        }
+    </table>
+    <h3>Pretraga</h3>
+    if (TempData["poruka"] != null)
+    {
+        <p>@TempData["poruka"]</p>
+    }
+    <form action="~/Trener/Pretrazi" method="post">
+        <label>Naziv:</label><input type="text" name="naziv" /><br />
+        <label>Tip treninga:</label><input type="text" name="tipTreninga" /><br />
+        <label>Datum i vreme odrzavanja:</label><input type="datetime-local" name="minDatVreme" /> - <input type="datetime-local" name="maxDatVreme" /><br />
+        <label><font color="red">Izabrani datum mora biti od @TempData["poruka1"] (godina otvaranja fitnes centra)</font></label><br />
+        <input type="submit" value="Pretrazi" />
+    </form>
+    <h3>Sortiranje</h3>
+    <form action="~/Trener/SortirajPoNazivu" method="get">
+        Sortiraj po nazivu: <select name="nacin">
+            <option value="Opadajuce">Opadajuce</option>
+            <option value="Rastuce">Rastuce</option>
+        </select> <input type="submit" value="Sortiraj" />
+    </form>
+    <form action="~/Trener/SortirajPoTipuTreninga" method="get">
+        Sortiraj po tipu treninga: <select name="nacin">
+            <option value="Opadajuce">Opadajuce</option>
+            <option value="Rastuce">Rastuce</option>
+        </select> <input type="submit" value="Sortiraj" />
+    </form>
+    <form action="~/Trener/SortirajPoDatumuIVremenu" method="get">
+        Sortiraj po datumu i vremenu odrzavanja: <select name="nacin">
+            <option value="Opadajuce">Opadajuce</option>
+            <option value="Rastuce">Rastuce</option>
+        </select> <input type="submit" value="Sortiraj" />
+    </form>
+
+}
+else
+{
+
+    <h4>Nemate zavrseniih grupnih treninga!</h4>
+}
+<a href="~/Trener/PregledGrupnihTreninga" style="color:#0099ff">Nazad</a><br />
+<a href="~/Trener/PregledZavrsenihTreninga" style="color:#0099ff">Reset</a>

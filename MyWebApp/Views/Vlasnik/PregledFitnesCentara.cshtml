@@ -1,0 +1,111 @@
+﻿@using MyWebApp.Models
+@model IEnumerable<FitnesCentar>
+@{
+    Layout = null;
+    ViewBag.Title = "PregledFitnesCentara";
+}
+
+<style>
+    body {
+        background-color: #ffe6e6
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    table {
+        background-color: #e0ebeb;
+    }
+
+    p {
+        color: red
+    }
+</style>
+<h2>Moji fitnes centri</h2>
+@if (Model.Count()!=0)
+{
+    <table border="1">
+        <tr>
+            <th>Naziv</th>
+            <th>Adresa</th>
+            <th>Godina otvaranja</th>
+            <th>Cena mesecne clanarine</th>
+            <th>Cena godisnje clanarine</th>
+            <th>Cena treninga</th>
+            <th>Cena grupnog treniga</th>
+            <th>Cena grupnog treninga sa personalnim trenerom</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (FitnesCentar f in Model)
+        {
+        <tr>
+            <td>@f.Naziv</td>
+            <td>@f.Adresa</td>
+            <td>@f.GodinaOtvaranja</td>
+            <td>@f.CenaMesecneClanarine</td>
+            <td>@f.CenaGodisnjeClanarine</td>
+            <td>@f.CenaTreninga</td>
+            <td>@f.CenaGrupnogTreninga</td>
+            <td>@f.CenaGrupnogTreningaSaPT</td>
+            <td>
+                <form action="~/Vlasnik/RegistracijaTrenera" method="post">
+                    <input type="text" value="@f.Naziv" name="fitnesCentar" hidden />
+                    <input type="text" value="@f.Adresa" name="adresa" hidden />
+                    <input type="submit" value="Registruj trenera" />
+                </form>
+            </td>
+            <td>
+                <form action="~/Vlasnik/IzmenaFitnesCentra" method="post">
+                    <input type="text" value="@f.Naziv" name="nazivFC" hidden />
+                    <input type="text" value="@f.Adresa" name="adresa" hidden />
+                    <input type="submit" value="Izmeni" />
+                </form>
+            </td>
+            <td>
+                <form action="~/Vlasnik/Obrisi" method="post">
+                    <input type="text" value="@f.Naziv" name="nazivFC" hidden />
+                    <input type="text" value="@f.Adresa" name="adresa" hidden />
+                    <input type="submit" value="Obrisi" />
+                </form>
+            </td>
+            <td>
+                <form action="~/Vlasnik/Blokiranje" method="post">
+                    <input type="text" value="@f.Naziv" name="nazivFC" hidden />
+                    <input type="text" value="@f.Adresa" name="adresa" hidden />
+                    <input type="submit" value="Blokiraj trenera" />
+                </form>
+            </td>
+            <td>
+                <form action="~/Vlasnik/MojiKomentari" method="post">
+                    <input type="text" value="@f.Naziv" name="fitnesCentar" hidden />
+                    <input type="text" value="@f.Adresa" name="adresa" hidden />
+                    <input type="submit" value="Vidi komentare" />
+                </form>
+            </td>
+        </tr>
+        }
+
+    </table>
+}
+else
+{
+    <h3>Nemate svojih fitnes centara!</h3>
+}
+
+ <a href="~/Vlasnik/Kreiranje" style="color:#0099ff">Dodaj novi fitnes centar</a><br/>
+
+<a href="~/Home/Index" style="color:#0099ff">Nazad</a>
+

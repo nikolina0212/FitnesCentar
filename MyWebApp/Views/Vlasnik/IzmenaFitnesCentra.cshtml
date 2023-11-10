@@ -1,0 +1,136 @@
+﻿@using MyWebApp.Models
+@model IEnumerable<FitnesCentar>
+@{
+    ViewBag.Title = "IzmenaFitnesCentra";
+    Layout = null;
+}
+
+<style>
+    body {
+        background-color: #ffe6e6
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+    h3 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    table {
+        background-color: #e0ebeb;
+    }
+
+    p {
+        color: red
+    }
+</style>
+<h2>Informacije o fitnes centru</h2>
+@if (Model != null)
+{
+    foreach (FitnesCentar f in Model)
+    {
+        <table border="1">
+            <tr>
+                <td>Naziv</td>
+                <td>@f.Naziv</td>
+            </tr>
+            <tr>
+                <td>Adresa</td>
+                <td>@f.Adresa</td>
+            </tr>
+            <tr>
+                <td>Godina otvaranja</td>
+                <td>@f.GodinaOtvaranja.ToString()</td>
+            </tr>
+            <tr>
+                <td>Cena mesecne clanarine</td>
+                <td>@f.CenaMesecneClanarine</td>
+            </tr>
+            <tr>
+                <td>Cena godisnje clanarine</td>
+                <td>@f.CenaGodisnjeClanarine</td>
+            </tr>
+            <tr>
+                <td>Cena treninga</td>
+                <td>@f.CenaTreninga</td>
+            </tr>
+            <tr>
+                <td>Cena grupnog treninga</td>
+                <td>@f.CenaGrupnogTreninga</td>
+            </tr>
+            <tr>
+                <td>Cena grupnog treninga sa personalnim trenerom</td>
+                <td>@f.CenaGrupnogTreningaSaPT</td>
+            </tr>
+
+        </table>
+
+        <h3>Izmena podataka:</h3>
+        if (TempData["poruka"] != null)
+        {
+            <p>@TempData["poruka"]</p>
+        }
+        <form action="~/Vlasnik/IzmeniNaziv" method="post">
+            <label>Naziv: </label>
+            <input type="text" name="naziv" />
+            <input type="text" name="fitnesC" value="@f.Naziv" hidden />
+            <input type="text" name="adresaC" value="@f.Adresa" hidden />
+            <input type="submit" value="Izmeni" />
+        </form>
+        <form action="~/Vlasnik/IzmeniAdresu" method="post">
+            <label>Adresa: </label>
+            <input type="text" name="adresa" />
+            <input type="text" name="fitnesC" value="@f.Naziv" hidden />
+            <input type="text" name="adresaC" value="@f.Adresa" hidden />
+            <input type="submit" value="Izmeni" />
+        </form>
+        <form action="~/Vlasnik/IzmeniMesecnuClanarinu" method="post">
+            <label>Cena mesecne clanarine: </label>
+            <input type="number" name="cmcl" />
+            <input type="text" name="fitnesC" value="@f.Naziv" hidden />
+            <input type="text" name="adresaC" value="@f.Adresa" hidden />
+            <input type="submit" value="Izmeni" />
+        </form>
+        <form action="~/Vlasnik/IzmeniGodisnjuClanarinu" method="post">
+            <label>Cena godisnje clanarine: </label>
+            <input type="number" name="cgcl" />
+            <input type="text" name="fitnesC" value="@f.Naziv" hidden />
+            <input type="text" name="adresaC" value="@f.Adresa" hidden />
+            <input type="submit" value="Izmeni" />
+        </form>
+        <form action="~/Vlasnik/IzmeniCenuTreninga" method="post">
+            <label>Cena treninga: </label>
+            <input type="number" name="cenaT" />
+            <input type="text" name="fitnesC" value="@f.Naziv" hidden />
+            <input type="text" name="adresaC" value="@f.Adresa" hidden />
+            <input type="submit" value="Izmeni" />
+        </form>
+        <form action="~/Vlasnik/IzmeniCenuGrupnogTreninga" method="post">
+            <label>Cena grupnog treninga: </label>
+            <input type="number" name="cenaGT" />
+            <input type="text" name="fitnesC" value="@f.Naziv" hidden />
+            <input type="text" name="adresaC" value="@f.Adresa" hidden />
+            <input type="submit" value="Izmeni" />
+        </form>
+        <form action="~/Vlasnik/IzmeniCenuGrupnogTreningaSaPT" method="post">
+            <label>Cena grupnog treninga sa personalnim trenerom: </label>
+            <input type="number" name="cenaGTsaPT" />
+            <input type="text" name="fitnesC" value="@f.Naziv" hidden />
+            <input type="text" name="adresaC" value="@f.Adresa" hidden />
+            <input type="submit" value="Izmeni" />
+        </form>
+
+    }
+}
+<a href="~/Vlasnik/PregledFitnesCentara" style="color:#0099ff">Nazad</a>
+
+

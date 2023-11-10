@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "Poruka";
+}
+
+<style>
+    body {
+        background-color: #e0ebeb
+    }
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+</style>
+
+@if (TempData["poruka1"] != null)
+{
+    <h2>@TempData["poruka1"]</h2>
+    <a href="~/Home/Index" style="color:#0099ff">Nazad</a>
+}
+@if (TempData["poruka"] != null)
+{
+    <h2>@TempData["poruka"]</h2>
+    <a href="~/Home/Index" style="color:#0099ff">Nazad</a>
+}
+@if (TempData["poruka2"] != null)
+{
+    <h2>@TempData["poruka2"]</h2>
+    <a href="~/Vlasnik/PregledFitnesCentara" style="color:#0099ff">Nazad</a>
+}
+

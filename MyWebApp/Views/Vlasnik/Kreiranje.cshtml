@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "Kreiranje";
+    Layout = null;
+}
+
+<style>
+    body {
+        background-color: #e0ebeb
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+
+    p {
+        color: red;
+    }
+
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+    }
+</style>
+
+<h2>Novi fitnes centar</h2>
+@if (TempData["poruka"] != null)
+{
+    <p>@TempData["poruka"]</p>
+}
+@if (TempData["porukaaa"] != null)
+{
+    <p>@TempData["porukaaa"]</p>
+}
+<form action="~/Vlasnik/Kreiraj" method="post">
+    <table>
+        <tr>
+            <td>Naziv:</td>
+            <td><input type="text" name="naziv" /></td>
+            <td>
+                @if (TempData["poruka1"] != null)
+                {
+                    <p>@TempData["poruka1"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Adresa:</td>
+            <td><input type="text" name="adresa" /></td>
+            <td>(u formatu ulica, grad, postanski broj)</td>
+            <td>
+                @if (TempData["poruka2"] != null)
+                {
+                    <p>@TempData["poruka2"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Cena mesecne clanarine</td>
+            <td><input type="number" name="mesecnaCl" /></td>
+            <td>
+                @if (TempData["poruka3"] != null)
+                {
+                    <p>@TempData["poruka3"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Cena godisnje clanarine:</td>
+            <td><input type="number" name="godisnjaCl" /></td>
+            <td>
+                @if (TempData["poruka4"] != null)
+                {
+                    <p>@TempData["poruka4"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Cena treninga:</td>
+            <td><input type="number" name="cenaTr" /></td>
+            <td>
+                @if (TempData["poruka5"] != null)
+                {
+                    <p>@TempData["poruka5"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Cena grupnog treninga:</td>
+            <td><input type="number" name="cenaGrupnogTr" /></td>
+            <td>
+                @if (TempData["poruka6"] != null)
+                {
+                    <p>@TempData["poruka6"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Cena treninga sa personalnim trenerom:</td>
+            <td><input type="number" name="cenaTrSaPT" /></td>
+            <td>
+                @if (TempData["poruka7"] != null)
+                {
+                    <p>@TempData["poruka7"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Kreiraj" />
+            </td>
+        </tr>
+    </table>
+
+</form>
+<a href="~/Vlasnik/PregledFitnesCentara" style="color:#0099ff">Nazad</a>
+

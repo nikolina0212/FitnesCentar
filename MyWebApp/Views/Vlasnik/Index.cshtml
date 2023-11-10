@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<style>
+    body {
+        background-color: #e0ebeb
+    }
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+</style>
+
+@if (TempData["poruka"] != null)
+{
+    <h2>@TempData["poruka"]</h2>
+}
+
+@if (TempData["porukaa"] != null)
+{
+    <h2>@TempData["porukaa"]</h2>
+}
+<a href="~/Vlasnik/PregledFitnesCentara" style="color:#0099ff">Nazad</a>

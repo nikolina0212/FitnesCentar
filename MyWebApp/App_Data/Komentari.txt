@@ -1,0 +1,6 @@
+kiki55;MissFit;Brace Ribnikar 15, Novi Sad, 21000;ok;32;2
+janko;MissFit;Brace Ribnikar 15, Novi Sad, 21000;Odlicno;5;3
+milica;Bestfit24;Bulevar Oslobodjenja 127, Novi Sad, 21000;veoma dobro;4.2;4
+milica;Non Stop;Narodnih heroja 1, Novi Sad, 21000;bravo;5;5
+ivan;MissFit;Brace Ribnikar 15, Novi Sad, 21000;sve pohvale;5;7
+stefan11;Bestfit24;Bulevar Oslobodjenja 127, Novi Sad, 21000;sve pohvale;5;7

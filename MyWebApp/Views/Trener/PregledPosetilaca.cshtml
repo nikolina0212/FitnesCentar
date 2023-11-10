@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "PregledPosetilaca";
+}
+<style>
+    body {
+        background-color: #ffe6e6
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+    table {
+        background-color: #e0ebeb;
+    }
+
+    p {
+        color: red
+    }
+</style>
+
+@if (TempData["poruka"] != null)
+{
+    <p>@TempData["poruka"]</p>
+}
+<h2>Spisak posetilaca:</h2>
+@if (ViewBag.Message.SpisakPosetilaca.Count != 0)
+{
+    foreach (var g in ViewBag.Message.SpisakPosetilaca)
+    {
+
+        <ul>
+            <li>@g</li>
+        </ul>
+    }
+}
+else
+{
+    <h3> Ne postoje prijavljeni posetioci za ovaj trening!</h3>
+}
+
+<a href="~/Trener/PregledGrupnihTreninga" style="color:#0099ff">Nazad</a>

@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Registracija";
+    Layout = null;
+}
+
+<style>
+    body {
+        background-color: #e0ebeb
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+    p{
+        color:red;
+    }
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+    }
+</style>
+<h2>Registracija</h2>
+@if (TempData["poruka"] != null)
+{
+    <p>@TempData["poruka"]</p>
+}
+
+<form action="~/Autentifikacija/Registracija" method="post">
+    <table>
+        <tr>
+            <td>Korisnicko ime:</td>
+            <td><input type="text" name="korisnickoIme" /></td>
+            <td>
+                @if (TempData["poruka1"] != null)
+                {
+                    <p>@TempData["poruka1"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Lozinka:</td>
+            <td><input type="password" name="lozinka" /></td>
+            <td>
+                @if (TempData["poruka2"] != null)
+                {
+                    <p>@TempData["poruka2"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Ime:</td>
+            <td><input type="text" name="ime" /></td>
+            <td>
+                @if (TempData["poruka3"] != null)
+                {
+                    <p>@TempData["poruka3"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Prezime:</td>
+            <td><input type="text" name="prezime" /></td>
+            <td>
+                @if (TempData["poruka4"] != null)
+                {
+                    <p>@TempData["poruka4"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Pol:</td>
+            <td>
+                <select name="pol">
+                    <option value="Muski">MUSKI</option>
+                    <option value="Zenski">ZENSKI</option>
+                </select>
+            </td>
+            <td>
+                @if (TempData["poruka5"] != null)
+                {
+                    <p>@TempData["poruka5"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" name="email" /></td>
+            <td>
+                @if (TempData["poruka6"] != null)
+                {
+                    <p>@TempData["poruka6"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Datum rodjenja:</td>
+            <td><input type="date" name="datumRodjenja" /></td>
+            <td>
+                @if (TempData["poruka7"] != null)
+                {
+                    <p>@TempData["poruka7"]</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Registruj se" /></td>
+        </tr>
+    </table>
+
+</form>
+<a href="~/Home/Index" style="color:#0099ff">Povratak na pocetnu stranicu</a>
+

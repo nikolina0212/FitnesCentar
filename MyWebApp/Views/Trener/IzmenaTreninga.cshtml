@@ -1,0 +1,111 @@
+﻿@using MyWebApp.Models
+@model IEnumerable<GrupniTrening>
+@{
+    Layout = null;
+    ViewBag.Title = "IzmenaTreninga";
+}
+
+<style>
+    body {
+        background-color: #ffe6e6
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    table {
+        background-color: #e0ebeb;
+    }
+
+    p {
+        color: red
+    }
+</style>
+
+<h2>Informacije o treningu</h2>
+@if (Model != null)
+{
+    foreach (GrupniTrening g in Model)
+    {
+        <table border="1">
+            <tr>
+                <td>Naziv</td>
+                <td>@g.Naziv</td>
+            </tr>
+            <tr>
+                <td>Tip treninga</td>
+                <td>@g.TipTreninga</td>
+            </tr>
+            <tr>
+                <td>Naziv fitnes centra</td>
+                <td>@g.FitnesCentar.Naziv</td>
+            </tr>
+            <tr>
+                <td>Adresa</td>
+                <td>@g.FitnesCentar.Adresa</td>
+            </tr>
+            <tr>
+                <td>Trajanje treninga</td>
+                <td>@g.TrajanjeTreninga</td>
+            </tr>
+            <tr>
+                <td>Vreme treninga</td>
+                <td>@g.VremeTreninga.ToString("dd/MM/yyyy HH:mm")</td>
+            </tr>
+            <tr>
+                <td>Maksimalan broj posetilaca</td>
+                <td>@g.MaxBrPosetilaca</td>
+            </tr>
+        </table>
+
+
+        if (TempData["poruka"] != null)
+        {
+            <p>@TempData["poruka"]</p>
+        }
+
+
+        <h3>Izmena podataka:</h3>
+        <form action="~/Trener/IzmeniNaziv" method="post">
+            <label>Naziv: </label>
+            <input type="text" name="nazivTr" />
+            <input type="text" name="naziv" value="@g.Naziv" hidden />
+            <input type="submit" value="Izmeni" />
+        </form>
+        <form action="~/Trener/IzmeniTipTreninga" method="post">
+            <label>Tip treninga: </label>
+            <input type="text" name="tipTreninga" />
+            <input type="text" name="naziv" value="@g.Naziv" hidden />
+            <input type="submit" value="Izmeni" />
+        </form>
+        <form action="~/Trener/IzmeniTrajanjeTreninga" method="post">
+            <label>Trajanje treninga: </label>
+            <input type="number" name="trajanjeTreninga" />
+            <input type="text" name="naziv" value="@g.Naziv" hidden />
+            <input type="submit" value="Izmeni" />
+        </form>
+        <form action="~/Trener/IzmeniDatumIVreme" method="post">
+            <label>Datum i vreme: </label>
+            <input type="datetime-local" name="datumVreme" />
+            <input type="text" name="naziv" value="@g.Naziv" hidden />
+            <input type="submit" value="Izmeni" />
+        </form>
+        <form action="~/Trener/IzmeniMaksimalanBrojPosetilaca" method="post">
+            <label>Maksimalan broj posetilaca: </label>
+            <input type="number" name="maxBrPosetilaca" />
+            <input type="text" name="naziv" value="@g.Naziv" hidden />
+            <input type="submit" value="Izmeni" />
+        </form>
+        <a href="~/Trener/PregledGrupnihTreninga" style="color:#0099ff">Nazad</a>
+    }
+}
+
+

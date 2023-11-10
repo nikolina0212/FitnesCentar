@@ -1,0 +1,103 @@
+﻿@using MyWebApp.Models
+@model IEnumerable<GrupniTrening>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+<style>
+    body {
+        background-color: #e0ebeb
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        color: #0099ff;
+    }
+
+    p {
+        color: red;
+    }
+
+    input[type=submit] {
+        background-color: #b3daff;
+        color: black;
+        text-decoration: none;
+    }
+</style>
+
+<h2>Kreiraj novi trenig</h2>
+@if (TempData["poruka"] != null)
+{
+    <p>@TempData["poruka"]</p>
+}
+@if (TempData["porukaaa"] != null)
+{
+    <p>@TempData["porukaaa"]</p>
+}
+<form action="~/Trener/Dodaj" method="post">
+    <table>
+        <tr>
+            <td>Naziv:</td>
+            <td><input type="text" name="naziv" /></td>
+            <td>
+                @if (TempData["poruka1"] != null)
+                {
+                    <p>@TempData["poruka1"]</p>
+                }
+
+            </td>
+        </tr>
+        <tr>
+            <td>Tip treninga:</td>
+            <td>
+                <input type="text" name="tipTreninga" />
+            </td>
+            <td>
+                @if (TempData["poruka2"] != null)
+                {
+                    <p>@TempData["poruka2"]</p>
+                }
+
+            </td>
+        </tr>
+        <tr>
+            <td>Trajanje treninga:</td>
+            <td><input type="number" name="trajanjeTreninga" /></td>
+            <td>
+                @if (TempData["poruka5"] != null)
+                {
+                    <p>@TempData["poruka5"]</p>
+                }
+
+            </td>
+        </tr>
+        <tr>
+            <td>Datum i vreme treninga:</td>
+            <td><input type="datetime-local" name="datumIVreme" /></td>
+            <td>
+                @if (TempData["poruka6"] != null)
+                {
+                    <p>@TempData["poruka6"]</p>
+                }
+
+            </td>
+        </tr>
+        <tr>
+            <td>Maksimalan broj posetilaca:</td>
+            <td><input type="number" name="maxPosetilaca" /></td>
+            <td>
+                @if (TempData["poruka7"] != null)
+                {
+                    <p>@TempData["poruka7"]</p>
+                }
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Dodaj" /></td>
+        </tr>
+    </table>
+</form>
+<a href="~/Trener/PregledGrupnihTreninga" style="color:#0099ff">Nazad</a>
+

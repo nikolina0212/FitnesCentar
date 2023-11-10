@@ -1,0 +1,20 @@
+miloss;1234;Milos;Jankovic;Muski;milosm@gmail.com;12/07/1997;VLASNIK;/;/;True;False
+joca222;joca222;Jovan;Jovanovic;Muski;jjov@gmail.com;04/06/2003;VLASNIK;/;/;True;False
+kiki55;111;Kristina;Peric;Zenski;perickika@gmail.com;14/10/1997;POSETILAC;/;/;True;False
+stefan11;steff;Stefan;Saric;Muski;ssaric@gmail.com;17/11/1999;POSETILAC;/;/;True;False
+srdjan88;333;Srdjan;Ilic;Muski;silic88@gmail.com;19/07/1988;TRENER;Pro;Narodnog Fronta 58, Novi Sad, 21000;False;True
+anaaa;99999;Ana;Andjelic;Zenski;anaa@gmail.com;31/08/2000;TRENER;Non Stop;Narodnih heroja 1, Novi Sad, 21000;False;True
+milicaa;222;Milica;Milic;Zenski;mmilic@gmail.com;19/07/2002;TRENER;She;Narodnog fronta 2, Novi Sad, 21000;False;True
+janko;janko;Janko;Jankovic;Muski;jjankovic@gmail.om;28/01/2010;POSETILAC;/;/;True;False
+mima;mima;Milena;Simovic;Zenski;msimovic@gmail.com;14/10/1998;TRENER;Bestfit24;Bulevar Oslobodjenja 127, Novi Sad, 21000;True;False
+ivan;ivan;Ivan;Ivanovic;Muski;ivanivanovic@gmail.com;28/06/2000;POSETILAC;/;/;True;False
+nikolina00;nikolina00;Nikolina;Zotovic;Zenski;nikolinazotovic@gmail.com;02/12/2000;VLASNIK;/;/;True;False
+milica;milica;Milica;Milosevic;Muski;mica01@gmail.com;12/06/2013;POSETILAC;/;/;True;False
+iva;iva;Ivana;Ivanovic;Zenski;ivaa@gmail.com;13/08/2000;TRENER;MissFit;Brace Ribnikar 15, Novi Sad, 21000;True;False
+nikola;nikola;Nikola;Filipovic;Muski;nfilipovic@gmail.com;28/09/1997;TRENER;MissFit;Brace Ribnikar 15, Novi Sad, 21000;False;True
+jana;jana;Jana;Andjelic;Zenski;jandjelic@gmail.com;29/06/2003;POSETILAC;/;/;True;False
+joka;joka;Jovana;Jovanovic;Zenski;jokajo@gmail.com;12/11/2006;POSETILAC;/;/;True;False
+dragana05;gaga123;Dragana;Jovanovic;Zenski;draganajo@gmail.com;25/10/2000;TRENER;Non Stop;Narodnih heroja 1, Novi Sad, 21000;True;False
+veka;veka;Vedrana;Milic;Zenski;vmilic@gmail.com;30/10/1998;TRENER;MissFit;Lasla Gala 34, Novi Sad, 21000;True;True
+ivana;ivana;Ivana;Kovacevic;Zenski;ivanakovacevic@gmail.com;30/10/2000;POSETILAC;/;/;True;False
+ana22;ana22;Ana;Ivanovic;Zenski;anaivanovic@gmail.com;30/10/1995;TRENER;MissFit;Lasla Gala 34, Novi Sad, 21000;False;False
